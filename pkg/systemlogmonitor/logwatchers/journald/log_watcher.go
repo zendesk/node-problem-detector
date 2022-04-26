@@ -1,3 +1,4 @@
+//go:build journald
 // +build journald
 
 /*
@@ -77,7 +78,7 @@ func (j *journaldWatcher) Watch() (<-chan *logtypes.Log, error) {
 		return nil, err
 	}
 	j.journal = journal
-	glog.Info("Start watching journald")
+	//glog.Info("Start watching journald") // .Debug is not a thing
 	go j.watchLoop()
 	return j.logCh, nil
 }
